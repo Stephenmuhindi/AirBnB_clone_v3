@@ -1,4 +1,6 @@
-ontains the class DBStorage
+#!/usr/bin/python3
+"""
+Contains the class DBStorage
 """
 
 import models
@@ -75,7 +77,7 @@ class DBStorage:
 
     def get(self, cls, id):
         """
-        element id
+        Function Docs
         """
         for element in self.all(cls).values():
             if id == element.id:
@@ -84,6 +86,6 @@ class DBStorage:
 
     def count(self, cls=None):
         """
-        length
+        Function Docs
         """
         return (len(self.all(cls)))
