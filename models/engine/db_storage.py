@@ -77,7 +77,7 @@ class DBStorage:
 
     def get(self, cls, id):
         """
-        Function Docs
+        get method
         """
         for element in self.all(cls).values():
             if id == element.id:
@@ -86,6 +86,6 @@ class DBStorage:
 
     def count(self, cls=None):
         """
-        Function Docs
+        count method
         """
         return (len(self.all(cls)))
