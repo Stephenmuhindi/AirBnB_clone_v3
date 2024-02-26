@@ -10,10 +10,9 @@ from hashlib import md5
 
 
 class User(BaseModel, Base):
-    """Representation of a user"""
-
-    if models.storage_t == "db":
-        __tablename__ = "users"
+    """Representation of a user """
+    if models.storage_t == 'db':
+        __tablename__ = 'users'
         email = Column(String(128), nullable=False)
         password = Column(String(128), nullable=False)
         first_name = Column(String(128), nullable=True)
@@ -27,6 +26,15 @@ class User(BaseModel, Base):
         last_name = ""
 
     def __init__(self, *args, **kwargs):
-        """initializes user"""
+        """init"""
         super().__init__(*args, **kwargs)
-        self.password = md5(self.password.encode()).hexdigest()
+
+    def __setattr__(self, name, value):
+        """
+        password error
+        """
+        if name == "password":
+            super(User, self).__setattr__(name,
+                                          md5(value.encode()).hexdigest())
+        else:
+            super(User, self).__setattr__(name, value)
