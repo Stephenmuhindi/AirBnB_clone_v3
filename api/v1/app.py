@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
-instance of Flask
+flask document
 """
+
 from api.v1.views import app_views
 from flasgger import Swagger
 from flasgger.utils import swag_from
@@ -18,7 +19,7 @@ cors = CORS(app, resources={r"/api/v1/*": {"origins": "0.0.0.0"}})
 @app.teardown_appcontext
 def teardown(self):
     """
-    close store
+    teardown part
     """
     return storage.close()
 
@@ -26,7 +27,7 @@ def teardown(self):
 @app.errorhandler(404)
 def error(error):
     """
-    error handlng
+    handles errors
     """
     return jsonify({"error": "Not found"}), 404
 
